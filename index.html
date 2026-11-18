@@ -167,7 +167,7 @@ $("#aboutBody").innerHTML = ME.about.map(t => "<p>" + t + "</p>").join("");
 $("#skillsBody").innerHTML = Object.entries(ME.skills).map(([k, v]) => "<dt>" + k + "</dt><dd class='tags'>" + tags(v) + "</dd>").join("");
 $("#projBody").innerHTML = ME.projects.map(p => "<div class='row'><h3>" + p.name + "</h3><p>" + p.desc + "</p><div class='tags'>" + tags(p.tags) + "</div><a href='" + p.link + "' target='_blank' rel='noopener'>View source on GitHub</a></div>").join("");
 $("#roadBody").innerHTML = ME.roadmap.map(r => "<li><b>" + r.when + "</b>" + r.text + "</li>").join("");
-$("#contactBody").innerHTML = "<a href='" + ME.links.github + "' target='_blank' rel='noopener'>GitHub</a><a href='" + ME.links.linkedin + "' target='_blank' rel='noopener'>LinkedIn</a><a href='https://mail.google.com/mail/?view=cm&amp;to=" + email() + "' target='_blank' rel='noopener'>";
+$("#contactBody").innerHTML = "<a href='" + ME.links.github + "' target='_blank' rel='noopener'>GitHub</a><a href='" + ME.links.linkedin + "' target='_blank' rel='noopener'>LinkedIn</a><a href='https://mail.google.com/mail/?view=cm&amp;to=" + email() + "' target='_blank' rel='noopener'>" + email() + "</a>";
 
 /* ---- interactive terminal ---- */
 const out = $("#out"), inp = $("#cmd"), hist = [];
