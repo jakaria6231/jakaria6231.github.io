@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name | Cybersecurity Student</title>
+<meta name="description" content="Portfolio of a CSE student learning cybersecurity: projects, skills and learning roadmap.">
+<style>
+:root{--bg:#070b14;--grid:#0e1728;--panel:#0d1524;--line:#1c2a42;--text:#d6e2f0;--mute:#8296b2;--sig:#5ce1ff;--bad:#ff5c7a;--mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:48px 48px;background-attachment:fixed;color:var(--text);font:17px/1.7 var(--sans)}
+a{color:var(--sig);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--sig);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:0;z-index:5;background:#070b14e6;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;height:54px;font:14px var(--mono)}
+nav b{color:var(--sig);white-space:nowrap}
+nav div{display:flex;gap:18px;overflow-x:auto}
+nav a{color:var(--mute);text-decoration:none}
+nav a:hover{color:var(--text)}
+.hero{padding:64px 0 40px}
+h1{font:700 clamp(2.2rem,7vw,4rem)/1.05 var(--mono);letter-spacing:-.03em}
+.lead{color:var(--mute);margin:14px 0 28px;max-width:60ch;font-size:1.1rem}
+.term{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 20px 60px #000a}
+.bar{display:flex;gap:7px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);font:13px var(--mono);color:var(--mute)}
+.bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.bar span{margin-left:8px}
+#out{padding:16px;font:14px/1.6 var(--mono);height:300px;overflow-y:auto;white-space:pre-wrap;word-break:break-word}
+#out .ok{color:var(--sig)}#out .err{color:var(--bad)}#out .echo b{color:var(--sig)}
+.in{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--line);font:14px var(--mono)}
+.in label{color:var(--sig);white-space:nowrap}
+.in input{flex:1;min-width:0;background:none;border:0;color:var(--text);font:inherit;outline:0;caret-color:var(--sig)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips button{font:13px var(--mono);color:var(--sig);background:none;border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer}
+.chips button:hover{border-color:var(--sig)}
+section{padding:56px 0 8px}
+h2{font:600 1.5rem var(--mono);margin-bottom:20px}
+h2::before{content:"# ";color:var(--sig)}
+#aboutBody p{max-width:68ch;margin-bottom:12px}
+.sk{display:grid;grid-template-columns:130px 1fr;gap:10px 18px;align-items:start}
+.sk dt{font:14px var(--mono);color:var(--mute);padding-top:3px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font:13px var(--mono);border:1px solid var(--line);border-radius:4px;padding:2px 9px;background:var(--panel)}
+.row{padding:18px 0;border-top:1px solid var(--line)}
+.row h3{font:600 1.05rem var(--mono)}
+.row p{color:var(--mute);margin:4px 0 10px;max-width:68ch}
+.row .tags{margin-bottom:10px}
+.road{list-style:none;border-left:2px solid var(--line);padding-left:22px}
+.road li{position:relative;margin-bottom:20px;max-width:68ch}
+.road li::before{content:"";position:absolute;left:-29px;top:9px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--sig)}
+.road b{display:block;font:600 14px var(--mono);color:var(--sig)}
+.links{display:flex;flex-wrap:wrap;gap:20px;font-family:var(--mono)}
+footer{padding:56px 0 40px;color:var(--mute);font:13px var(--mono)}
+#net{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hero,main,footer,.mq{position:relative;z-index:1}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(520px circle at var(--mx,50%) var(--my,25%),#5ce1ff17,transparent 60%)}
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-t);position:absolute;left:0;top:0;pointer-events:none;opacity:0}
+.glitch::before{color:var(--sig);clip-path:inset(0 0 55% 0)}
+.glitch::after{color:var(--bad);clip-path:inset(55% 0 0 0)}
+.glitch.hit::before,.glitch:hover::before{opacity:.9;transform:translate(-3px,-1px)}
+.glitch.hit::after,.glitch:hover::after{opacity:.9;transform:translate(3px,1px)}
+.role{font:1.15rem var(--mono);color:var(--sig);margin-top:14px;min-height:1.7em}
+.role::after{content:"\258C";margin-left:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.term{position:relative;animation:glow 4s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 20px 60px #000a,0 0 30px #5ce1ff38}}
+.term::before{content:"";position:absolute;left:0;right:0;top:-80px;height:80px;z-index:1;pointer-events:none;background:linear-gradient(transparent,#5ce1ff14,transparent);animation:scan 5s linear infinite}
+@keyframes scan{to{top:100%}}
+.mq{overflow:hidden;border-block:1px solid var(--line);background:#0d1524d9;padding:10px 0;font:13px var(--mono);color:var(--mute);white-space:nowrap}
+.mq div{display:inline-block;animation:mq 40s linear infinite}
+.mq span{margin:0 26px}
+.mq span::before{content:"// ";color:var(--sig)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.js .rv{opacity:0}
+.rv.in{animation:up .75s var(--d,0s) both}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.road{position:relative}
+.road::after{content:"";position:absolute;left:-2px;top:0;bottom:0;width:2px;background:var(--sig);transform:scaleY(0);transform-origin:top;transition:transform 1.8s ease}
+.road.in::after{transform:scaleY(1)}
+.row{transition:padding .3s,background .3s,border-color .3s}
+.row:hover{border-top-color:var(--sig);background:linear-gradient(90deg,#5ce1ff14,transparent);padding-left:14px}
+.tags span{transition:.2s}
+.tags span:hover{border-color:var(--sig);color:var(--sig);transform:translateY(-2px)}
+@media(max-width:600px){.sk{grid-template-columns:1fr}#out{height:260px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,::before,::after{animation:none!important;transition:none!important}.road::after{transform:none}#net{display:none}}
+</style>
+</head>
+<body>
+<noscript><p class="wrap">Please enable JavaScript to view this portfolio.</p></noscript>
+<canvas id="net" aria-hidden="true"></canvas>
+<nav><div class="wrap"><b>~/your-name</b><div><a href="#about">about</a><a href="#skills">skills</a><a href="#projects">projects</a><a href="#roadmap">roadmap</a><a href="#contact">contact</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+  <h1 id="name" class="glitch" data-t="Your Name">Your Name</h1>
+  <p class="role" id="role"></p>
+  <p class="lead" id="headline"></p>
+  <div class="term" role="region" aria-label="Interactive terminal">
+    <div class="bar"><i></i><i></i><i></i><span>visitor@portfolio: ~</span></div>
+    <div id="out" aria-live="polite"></div>
+    <form class="in" id="f" autocomplete="off">
+      <label for="cmd" id="ps"></label>
+      <input id="cmd" spellcheck="false" autocapitalize="off" autocorrect="off" aria-label="Type a command">
+    </form>
+  </div>
+  <div class="chips" id="chips"></div>
+</div></header>
+<div class="mq" aria-hidden="true"><div id="mq"></div></div>
+
+<main>
+  <section id="about"><div class="wrap"><h2>about</h2><div id="aboutBody"></div></div></section>
+  <section id="skills"><div class="wrap"><h2>skills</h2><dl class="sk" id="skillsBody"></dl></div></section>
+  <section id="projects"><div class="wrap"><h2>projects</h2><div id="projBody"></div></div></section>
+  <section id="roadmap"><div class="wrap"><h2>roadmap</h2><ol class="road" id="roadBody"></ol></div></section>
+  <section id="contact"><div class="wrap"><h2>contact</h2><div class="links" id="contactBody"></div></div></section>
+</main>
+<footer><div class="wrap">© <span id="yr"></span> <span id="fname"></span></div></footer>
+
+<script>
+/* ============ EDIT ONLY THIS BLOCK ============
+   Replace every sample value with your own real information.
+   List only skills you have actually used and projects you have actually built.
+   Never add a phone number or home address here. */
+const ME = {
+  name: "Your Name",
+  handle: "yourname",
+  headline: "CSE student learning how systems break, so I can help protect them.",
+  roles: ["ethical hacker in training", "CTF player", "future security engineer"],
+  about: [
+    "I study Computer Science and Engineering and I am building a career in cybersecurity.",
+    "I practice on beginner CTF platforms and write small security tools to understand how attacks and defenses really work."
+  ],
+  skills: {
+    Languages: ["C", "C++", "Python", "Java", "JavaScript", "Bash"],
+    Security: ["Linux", "Networking basics", "OWASP Top 10", "Nmap", "Wireshark", "Burp Suite"],
+    Tools: ["Git", "GitHub", "VS Code", "VirtualBox"]
+  },
+  projects: [
+    { name: "port-scanner", desc: "A multithreaded TCP port scanner in Python that reports open ports and common services.", tags: ["Python", "Networking", "Sockets"], link: "https://github.com/yourusername/port-scanner" },
+    { name: "password-strength-checker", desc: "Rates password strength by length, character variety and common-password lists, and never stores the input.", tags: ["Python", "Security"], link: "https://github.com/yourusername/password-strength-checker" },
+    { name: "ctf-writeups", desc: "Write-ups for beginner CTF challenges: what I tried, what worked and what I learned.", tags: ["CTF", "Linux", "Markdown"], link: "https://github.com/yourusername/ctf-writeups" }
+  ],
+  roadmap: [
+    { when: "Now", text: "Linux and networking fundamentals, plus beginner rooms on TryHackMe." },
+    { when: "Next", text: "A security certification such as CompTIA Security+, and my first CTF competitions." },
+    { when: "Later", text: "Web application security testing and responsible disclosure through bug bounty programs." }
+  ],
+  links: {
+    github: "https://github.com/yourusername",
+    linkedin: "https://www.linkedin.com/in/yourusername",
+    email: ["yourname", "gmail.com"]   /* split on purpose: the address is joined by script, which helps against spam bots */
+  }
+};
+/* ============ END OF EDIT BLOCK ============ */
+
+const $ = s => document.querySelector(s);
+const email = () => ME.links.email.join("@");
+const tags = a => a.map(t => "<span>" + t + "</span>").join("");
+
+document.title = ME.name + " | Cybersecurity Student";
+$("#name").textContent = ME.name;
+$("#headline").textContent = ME.headline;
+$("#fname").textContent = ME.name;
+$("#yr").textContent = new Date().getFullYear();
+$("#aboutBody").innerHTML = ME.about.map(t => "<p>" + t + "</p>").join("");
+$("#skillsBody").innerHTML = Object.entries(ME.skills).map(([k, v]) => "<dt>" + k + "</dt><dd class='tags'>" + tags(v) + "</dd>").join("");
+$("#projBody").innerHTML = ME.projects.map(p => "<div class='row'><h3>" + p.name + "</h3><p>" + p.desc + "</p><div class='tags'>" + tags(p.tags) + "</div><a href='" + p.link + "' target='_blank' rel='noopener'>View source on GitHub</a></div>").join("");
+$("#roadBody").innerHTML = ME.roadmap.map(r => "<li><b>" + r.when + "</b>" + r.text + "</li>").join("");
+$("#contactBody").innerHTML = "<a href='" + ME.links.github + "' target='_blank' rel='noopener'>GitHub</a><a href='" + ME.links.linkedin + "' target='_blank' rel='noopener'>LinkedIn</a><a href='mailto:" + email() + "'>" + email() + "</a>";
+
+/* ---- interactive terminal ---- */
+const out = $("#out"), inp = $("#cmd"), hist = [];
+let hi = 0;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+$("#ps").textContent = "visitor@" + ME.handle + ":~$";
+
+function print(t, c) {
+  const d = document.createElement("div");
+  if (c) d.className = c;
+  d.textContent = t;
+  out.appendChild(d);
+  out.scrollTop = out.scrollHeight;
+}
+const pad = (s, n) => s.padEnd(n);
+const C = {
+  help: () => ["Available commands: " + Object.keys(C).join(", ")],
+  whoami: () => [ME.name, ME.headline, ...ME.about],
+  skills: () => Object.entries(ME.skills).map(([k, v]) => pad(k, 11) + v.join(", ")),
+  projects: () => ME.projects.map(p => pad(p.name, 27) + p.tags.join(", ")),
+  roadmap: () => ME.roadmap.map(r => pad(r.when, 6) + r.text),
+  contact: () => ["github    " + ME.links.github, "linkedin  " + ME.links.linkedin, "email     " + email()],
+  clear: () => { out.textContent = ""; return []; },
+  sudo: () => ["Permission denied. Nice try."]
+};
+function run(raw) {
+  const c = raw.trim();
+  if (!c) return;
+  const e = document.createElement("div");
+  e.className = "echo";
+  e.innerHTML = "<b>$</b> ";
+  e.append(c);
+  out.appendChild(e);
+  hist.push(c); hi = hist.length;
+  const n = c.toLowerCase().split(/\s+/)[0];
+  if (Object.hasOwn(C, n)) C[n]().forEach(l => print(l, n === "sudo" ? "err" : ""));
+  else print("command not found: " + n + ". Type help to see commands.", "err");
+  out.scrollTop = out.scrollHeight;
+}
+$("#f").addEventListener("submit", e => { e.preventDefault(); run(inp.value); inp.value = ""; });
+inp.addEventListener("keydown", e => {
+  if (e.key === "ArrowUp" && hi > 0) { inp.value = hist[--hi]; e.preventDefault(); }
+  if (e.key === "ArrowDown") { inp.value = hist[++hi] || ""; hi = Math.min(hi, hist.length); e.preventDefault(); }
+});
+["help", "whoami", "skills", "projects", "roadmap", "contact"].forEach(c => {
+  const b = document.createElement("button");
+  b.type = "button"; b.textContent = c;
+  b.onclick = () => run(c);
+  $("#chips").appendChild(b);
+});
+["$ ./portfolio --start", "[ok] loading profile for " + ME.name, "[ok] mounting skills and projects", "Ready. Type help, or tap a command below."]
+  .forEach((l, i) => {
+    const cls = l.startsWith("[ok]") ? "ok" : "";
+    reduce ? print(l, cls) : setTimeout(() => print(l, cls), 300 + i * 450);
+  });
+
+/* ---- motion effects ---- */
+const nm = $("#name");
+nm.dataset.t = ME.name;
+if (!reduce) {
+  /* name decrypts from random symbols, then glitches every few seconds */
+  const set = "!<>-_/[]{}=+*^?#01";
+  let f = 0;
+  const t = setInterval(() => {
+    nm.textContent = [...ME.name].map((ch, i) => ch === " " ? " " : (i < f / 24 * ME.name.length ? ch : set[Math.random() * set.length | 0])).join("");
+    if (++f > 24) { clearInterval(t); nm.textContent = ME.name; }
+  }, 45);
+  setInterval(() => { nm.classList.add("hit"); setTimeout(() => nm.classList.remove("hit"), 140); }, 3500);
+}
+
+/* typed role line */
+(function () {
+  const el = $("#role"), R = ME.roles;
+  if (reduce) { el.textContent = R[0]; return; }
+  let r = 0, i = 0, d = false;
+  (function tick() {
+    const w = R[r];
+    el.textContent = w.slice(0, i);
+    let ms = d ? 30 : 65;
+    if (!d && i === w.length) { d = true; ms = 1400; }
+    else if (d && i === 0) { d = false; r = (r + 1) % R.length; ms = 300; }
+    else i += d ? -1 : 1;
+    setTimeout(tick, ms);
+  })();
+})();
+
+/* scrolling keyword strip */
+$("#mq").innerHTML = ["SQL injection", "XSS", "CSRF", "buffer overflow", "privilege escalation", "nmap -sV", "reverse shell", "packet capture", "hash cracking", "zero trust", "OSINT", "threat modeling"]
+  .map(w => "<span>" + w + "</span>").join("").repeat(4);
+
+/* sections fade up as you scroll to them */
+if (!reduce) {
+  document.documentElement.classList.add("js");
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold: 0.15 });
+  document.querySelectorAll("section h2,.sk dt,.sk dd,.row,.road li,.links a,#aboutBody p").forEach(el => {
+    el.classList.add("rv");
+    el.style.setProperty("--d", (Array.prototype.indexOf.call(el.parentNode.children, el) % 6) * 0.08 + "s");
+    io.observe(el);
+  });
+  io.observe($(".road"));
+}
+
+/* network background: nodes drift, and your cursor scans them in red */
+if (!reduce) {
+  const cv = $("#net"), x = cv.getContext("2d"), m = { x: -999, y: -999 };
+  let w, h, P = [];
+  const fit = () => {
+    w = cv.width = innerWidth; h = cv.height = innerHeight;
+    P = Array.from({ length: Math.min(90, Math.floor(w * h / 16000)) }, () => ({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4 }));
+  };
+  fit();
+  addEventListener("resize", fit);
+  addEventListener("pointermove", e => {
+    m.x = e.clientX; m.y = e.clientY;
+    document.body.style.setProperty("--mx", e.clientX + "px");
+    document.body.style.setProperty("--my", e.clientY + "px");
+  });
+  (function frame() {
+    x.clearRect(0, 0, w, h);
+    x.fillStyle = "#5ce1ff"; x.globalAlpha = .6;
+    for (const p of P) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      x.fillRect(p.x, p.y, 2, 2);
+    }
+    for (let i = 0; i < P.length; i++) {
+      for (let j = i + 1; j < P.length; j++) {
+        const d = Math.hypot(P[i].x - P[j].x, P[i].y - P[j].y);
+        if (d < 130) { x.globalAlpha = (1 - d / 130) * .35; x.strokeStyle = "#5ce1ff"; x.beginPath(); x.moveTo(P[i].x, P[i].y); x.lineTo(P[j].x, P[j].y); x.stroke(); }
+      }
+      const dm = Math.hypot(P[i].x - m.x, P[i].y - m.y);
+      if (dm < 170) { x.globalAlpha = (1 - dm / 170) * .7; x.strokeStyle = "#ff5c7a"; x.beginPath(); x.moveTo(P[i].x, P[i].y); x.lineTo(m.x, m.y); x.stroke(); }
+    }
+    requestAnimationFrame(frame);
+  })();
+}
+</script>
+</body>
+</html>
