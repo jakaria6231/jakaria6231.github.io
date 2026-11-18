@@ -115,7 +115,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:ra
   <section id="roadmap"><div class="wrap"><h2>roadmap</h2><ol class="road" id="roadBody"></ol></div></section>
   <section id="contact"><div class="wrap"><h2>contact</h2><div class="links" id="contactBody"></div></div></section>
 </main>
-<footer><div class="wrap">© <span id="yr"></span> <span id="fname"></span></div></footer>
+<footer><div class="wrap">© <span id="yr"></span> <span id="fname"></span> | Cybersecurity Enthusiast | Programmer</div></footer>
 
 <script>
 /* ============ EDIT ONLY THIS BLOCK ============
@@ -125,7 +125,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:ra
 const ME = {
   name: "Md. Jakaria Islam",
   handle: "jakaria6231",
-  headline: "CSE student learning how systems break, so I can help protect them.",
+  headline: "Cybersecurity Enthusiast | Programmer",
   roles: ["Ethical Hacker in Training", "CTF player", "Future Security Engineer"],
   about: [
     "I study Computer Science and Engineering and I am building a career in cybersecurity.",
@@ -158,7 +158,7 @@ const $ = s => document.querySelector(s);
 const email = () => ME.links.email.join("@");
 const tags = a => a.map(t => "<span>" + t + "</span>").join("");
 
-document.title = ME.name + " | Cybersecurity Student";
+document.title = ME.name + " | Cybersecurity Enthusiast | Programmer";
 $("#name").textContent = ME.name;
 $("#headline").textContent = ME.headline;
 $("#fname").textContent = ME.name;
